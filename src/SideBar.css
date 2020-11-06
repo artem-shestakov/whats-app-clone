@@ -1,0 +1,34 @@
+.SideBar {
+    flex: 0.35;
+}
+
+.SideBarHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-right: 1px solid lightgray;
+}
+
+.SideBarHeaderRight {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 10vw;
+}
+
+.SideBarHeaderRight > .MuiSvgIcon-root {
+    margin-right: 2vw;
+    font-size: 24px !important;
+}
+
+.SideBarSearch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-right: 1px solid lightgray;
+}
+
+.SideBarSearch > input {
+    width: 100%;
+}
