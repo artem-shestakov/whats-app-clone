@@ -1,0 +1,30 @@
+.Chat {
+    flex: 0.65;
+}
+
+.ChatHeader {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+
+.ChatHeaderInfo {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.ChatHeaderInfo > h3 {
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.ChatHeaderInfo > p {
+    color: grey;
+}
+
+.ChatHeaderRight {
+    display: flex;
+    justify-content: space-between;
+    min-width: 100px;
+}
