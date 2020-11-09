@@ -1,5 +1,7 @@
 .Chat {
     flex: 0.65;
+    display: flex;
+    flex-direction: column;
 }
 
 .ChatHeader {
@@ -27,4 +29,66 @@
     display: flex;
     justify-content: space-between;
     min-width: 100px;
+}
+
+.ChatBody {
+    flex: 1;
+    background: repeat center url("background.png");
+    overflow: scroll;
+    padding: 30px;
+}
+
+.ChatMessage {
+    position: relative;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.ChatReceiver {
+    margin-left: auto;
+    background-color: #dcf8c6;
+}
+
+.ChatName {
+    position: absolute;
+    top: -15px;
+    font-weight: 800;
+    font-size: xx-small;
+}
+
+.ChatTimeStamp {
+    margin-left: 10px;
+    font-size: xx-small;
+}
+
+.ChatFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    border-top: 1px solid lightgray;
+}
+
+.ChatFooter > .MuiSvgIcon-root {
+    padding: 10px;
+    color: grey;
+}
+
+.ChatFooter > form {
+    flex: 1;
+    display: flex;
+}
+
+.ChatFooter > form > input {
+    flex: 1;
+    border-radius: 30px;
+    padding: 10px;
+    border: none;
+}
+
+.ChatFooter > form > button {
+    display: none;
 }
