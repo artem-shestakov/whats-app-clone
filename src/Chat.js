@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import db from './firebase'
 
 function Chat() {
-    const [seed, setSeed] = useState('');
+    // const [seed, setSeed] = useState('');
     const [input, setInput] = useState('');
     const { roomId } = useParams();
     const [roomName, setRoomName] = useState("");
@@ -19,9 +19,9 @@ function Chat() {
         }
     }, [roomId]);
 
-    useEffect(() => {
-        setSeed(Math.floor(Math.random() * 5000));
-    }, [roomId]);
+    // useEffect(() => {
+    //     setSeed(Math.floor(Math.random() * 5000));
+    // }, [roomId]);
 
     const SendMessage = (e) => {
         e.preventDefault();
