@@ -75,7 +75,7 @@ function Chat() {
             </div>
             <div className="ChatBody">
                 {messages.map((message, index) => (
-                    <p className={`ChatMessage ${message.userId === user.uid && 'ChatReceiver'}`} key={message.id}>
+                    <p className={`ChatMessage ${message.data.userId === user.uid && 'ChatReceiver'}`}>
                         <span className="ChatName">{message.data.name}</span>
                         {message.data.message}
                         <span className="ChatTimeStamp">
