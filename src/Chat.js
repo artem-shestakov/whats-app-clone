@@ -10,11 +10,13 @@ import firebase from "firebase";
 function Chat() {
     const [{user}, dispatch] = useStateValue();
     const [input, setInput] = useState('');
+    const [lastSeen, setLastSeen] = useState("")
     const { roomId } = useParams();
     const [roomName, setRoomName] = useState("");
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
+        setLastSeen(new Date().toUTCString());
         if (roomId) {
             db.collection('rooms')
                 .doc(roomId)
@@ -41,6 +43,7 @@ function Chat() {
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             });
         setInput("")
+        setLastSeen(new Date().toUTCString());
     }
 
     return (
@@ -49,7 +52,13 @@ function Chat() {
                 <Avatar src={`https://avatars.dicebear.com/api/human/${roomId}.svg`}/>
                 <div className="ChatHeaderInfo">
                     <h3>{roomName}</h3>
-                    <p>Last seen at ...</p>
+                    <p>
+                        Last seen{" "}
+                        {lastSeen}
+                        {/*{new Date(*/}
+                        {/*    messages[messages.length - 1]?.timestamp?.toDate()).toUTCString()*/}
+                        {/*}*/}
+                    </p>
                 </div>
                 <div className="ChatHeaderRight">
                     <IconButton>
@@ -65,7 +74,7 @@ function Chat() {
             </div>
             <div className="ChatBody">
                 {messages.map(message => (
-                    <p className={`ChatMessage ${true && 'ChatReceiver'}`}>
+                    <p className={`ChatMessage ${message.name === user.displayName && 'ChatReceiver'}`}>
                         <span className="ChatName">{message.name}</span>
                         {message.message}
                         <span className="ChatTimeStamp">

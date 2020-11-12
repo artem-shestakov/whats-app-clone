@@ -16,7 +16,7 @@ function Login() {
                     type: actionTypes.SET_USER,
                     user: result.user,
                 })
-                sessionStorage.setItem('user', result.user)
+                sessionStorage.setItem('user', JSON.stringify(result.user));
             })
             .catch(error => alert(error.message))
     };
