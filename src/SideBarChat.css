@@ -10,9 +10,6 @@ a {
     color: black;
 }
 
-p {
-    color: grey !important;
-}
 .SideBarChat:hover {
     background-color: #ebebeb;
 }
@@ -24,4 +21,8 @@ p {
 
 .SideBarChatInfo {
     margin-left: 15px;
+}
+
+.SideBarChatInfo >p {
+    color: grey;
 }

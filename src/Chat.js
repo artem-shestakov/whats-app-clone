@@ -27,7 +27,10 @@ function Chat() {
                 .doc(roomId)
                 .collection("messages")
                 .orderBy("timestamp", "asc").onSnapshot(snapshot => {
-                    setMessages(snapshot.docs.map(doc => doc.data()))
+                    setMessages(snapshot.docs.map(doc => ({
+                        id: doc.id,
+                        data:doc.data(),
+                    })))
             })
         }
     }, [roomId]);
@@ -40,6 +43,7 @@ function Chat() {
             .add({
                 message: input,
                 name: user.displayName,
+                userId: user.uid,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             });
         setInput("")
@@ -55,9 +59,6 @@ function Chat() {
                     <p>
                         Last seen{" "}
                         {lastSeen}
-                        {/*{new Date(*/}
-                        {/*    messages[messages.length - 1]?.timestamp?.toDate()).toUTCString()*/}
-                        {/*}*/}
                     </p>
                 </div>
                 <div className="ChatHeaderRight">
@@ -73,12 +74,12 @@ function Chat() {
                 </div>
             </div>
             <div className="ChatBody">
-                {messages.map(message => (
-                    <p className={`ChatMessage ${message.name === user.displayName && 'ChatReceiver'}`}>
-                        <span className="ChatName">{message.name}</span>
-                        {message.message}
+                {messages.map((message, index) => (
+                    <p className={`ChatMessage ${message.userId === user.uid && 'ChatReceiver'}`} key={message.id}>
+                        <span className="ChatName">{message.data.name}</span>
+                        {message.data.message}
                         <span className="ChatTimeStamp">
-                            {new Date(message.timestamp?.toDate()).toUTCString()}
+                            {new Date(message.data.timestamp?.toDate()).toUTCString()}
                         </span>
                     </p>
                 ))}
