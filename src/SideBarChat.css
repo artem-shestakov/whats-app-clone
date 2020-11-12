@@ -5,6 +5,14 @@
     border-bottom: 1px solid #f6f6f6;
 }
 
+a {
+    text-decoration: none !important;
+    color: black;
+}
+
+p {
+    color: grey !important;
+}
 .SideBarChat:hover {
     background-color: #ebebeb;
 }

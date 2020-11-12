@@ -1,6 +1,15 @@
-export const initialState = {
-                user: null
-            }
+export const initialState = () => {
+    let user = sessionStorage.getItem("user");
+    if (user) {
+        user = JSON.parse(user);
+        return {
+            user: user
+        }
+    } else
+        return {
+            user: null
+        }
+}
 
 export const actionTypes = {
     SET_USER: "SET_USER"
